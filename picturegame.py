@@ -54,6 +54,7 @@ class Bot(object):
             response = client.post('https://ssl.reddit.com/api/login', data=data, headers=headers)
         modhash = response.json()['json']['data']['modhash']
         new_password = self.get_random_password()
+	print new_password
         data = {'api_type': 'json', 'uh': modhash, 'curpass': self.game_password,
                 'newpass': new_password, 'verpass': new_password, 'dest': '', 'verify': False}
         response = client.post('http://www.reddit.com/api/update', data=data, headers=headers)
